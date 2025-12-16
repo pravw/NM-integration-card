@@ -43,76 +43,64 @@ sap.ui.define([
 			}
 
 			switch (selectedOption) {
-				case "Current Object Card":
+
+
+				case "Current Object card":
 					configuration = {
-						"_version": "1.14.0",
+						"_version": "1.15.0",
 						"sap.app": {
-							"id": "card.explorer.current.weather.card",
-							"type": "card"
+							"id": "card.explorer.object.card",
+							"type": "card",
+							"title": "Current Weather Card",
+							"subTitle": "Weather Information"
+						},
+						"sap.ui": {
+							"technology": "UI5",
+							"icons": {
+								"icon": "sap-icon://weather-proofing"
+							}
 						},
 						"sap.card": {
 							"type": "Object",
-							"header": {
-								"title": "Current Weather in Vellore",
-								"subTitle": "{currentWeather>/name}, {currentWeather>/sys/country}",
+							// "data": {
+							//     "path": "currentWeather>/main"
+							// },
+							"data": {
+								"path": "currentWeather>/"
+							},
+
+                               "header": {
 								"icon": {
-									"src": "sap-icon://weather-proofing"
-								}
+									"src": "https://openweathermap.org/img/wn/{currentWeather>/weather/0/icon}@2x.png"
+								},
+								"title": "{currentWeather>/weather/0/main}",
+								"subTitle": "{currentWeather>/weather/0/description}"
 							},
 							"content": {
 								"groups": [
 									{
-										"title": "Temperature",
+										"title": "Temperature Detail",
 										"items": [
 											{
-												"label": "Current",
-												"value": "{currentWeather>/main/temp}°C"
+												"label": "Temperature",
+												"value": "{currentWeather>/main/temp} °C"
 											},
 											{
 												"label": "Feels Like",
-												"value": "{currentWeather>/main/feels_like}°C"
-											},
-											{
-												"label": "Min",
-												"value": "{currentWeather>/main/temp_min}°C"
-											},
-											{
-												"label": "Max",
-												"value": "{currentWeather>/main/temp_max}°C"
+												"value": "{currentWeather>/main/feels_like} °C"
 											}
 										]
 									},
 									{
-										"title": "Conditions",
+										"title": "Others",
 										"items": [
 											{
-												"label": "Weather",
-												"value": "{currentWeather>/weather/0/main}"
-											},
-											{
-												"label": "Description",
-												"value": "{currentWeather>/weather/0/description}"
+												"label": "Pressure",
+												"value": "{currentWeather>/main/pressure} hPa"
 											},
 											{
 												"label": "Humidity",
 												"value": "{currentWeather>/main/humidity}%"
-											},
-											{
-												"label": "Pressure",
-												"value": "{currentWeather>/main/pressure} hPa"
-											}
-										]
-									},
-									{
-										"title": "Wind",
-										"items": [
-											{
-												"label": "Speed",
-												"value": "{currentWeather>/wind/speed} m/s"
-											},
-											{
-												"label": "Direction",
-												"value": "{currentWeather>/wind/deg}°"
 											}
 										]
 									}
@@ -127,11 +115,8 @@ sap.ui.define([
 
 					if (cardContainer && cardContainer.addItem) {
 						cardContainer.addItem(currentCard);
-					} else if (cardContainer && cardContainer.addContent) {
-						cardContainer.addContent(currentCard);
 					}
 					break;
-
 				case "Hourly List Card":
 					configuration = {
 						"_version": "1.14.0",
@@ -240,164 +225,13 @@ sap.ui.define([
 					}
 					break;
 
-				// case "Hourly Analytical card":
-				// 	// Analytical card implementation can be added here
-				// 	configuration ={
-				// 		"_version": "1.14.0",
-				// 			"sap.app": {
-				// 			"id": "card.explorer.line.card",
-				// 				"type": "card",
-				// 					"title": "Sample of a Line Chart",
-				// 						"subTitle": "Sample of a Line Chart",
-				// 							"applicationVersion": {
-				// 				"version": "1.0.0"
-				// 			},
-				// 			"shortTitle": "A short title for this Card",
-				// 				"info": "Additional information about this Card",
-				// 					"description": "A long description for this Card",
-				// 						"tags": {
-				// 				"keywords": [
-				// 					"Analytical",
-				// 					"Card",
-				// 					"Line",
-				// 					"Sample"
-				// 				]
-				// 			}
-				// 		},
-				// 		"sap.ui": {
-				// 			"technology": "UI5",
-				// 				"icons": {
-				// 				"icon": "sap-icon://line-chart"
-				// 			}
-				// 		},
-				// 		"sap.card": {
-				// 			"type": "Analytical",
-				// 				"header": {
-				// 				"type": "Numeric",
-				// 					"data": {
-				// 					"json": {
-				// 						"number": "65.34",
-				// 							"unit": "K",
-				// 								"trend": "Down",
-				// 									"state": "Error",
-				// 										"target": {
-				// 							"number": 100,
-				// 								"unit": "K"
-				// 						},
-				// 						"deviation": {
-				// 							"number": 34.7,
-				// 								"state": "Critical"
-				// 						},
-				// 						"details": "Q1, 2018"
-				// 					}
-				// 				},
-				// 				"title": "Weather data analytical",
-				// 				},
-									
-				// 			},
-				// 			"content": {
-				// 				"chartType": "Line",
-				// 					"chartProperties": {
-				// 					"title": {
-				// 						"text": "Line chart",
-				// 							"visible": true,
-				// 								"alignment": "left"
-				// 					},
-				// 					"legend": {
-				// 						"visible": "{legend/visible}"
-				// 					},
-				// 					"legendGroup": {
-				// 						"layout": {
-				// 							"position": "{legend/position}",
-				// 								"alignment": "{legend/alignment}"
-				// 						}
-				// 					},
-				// 					"plotArea": {
-				// 						"dataLabel": {
-				// 							"visible": true
-				// 						}
-				// 					},
-				// 					"categoryAxis": {
-				// 						"title": {
-				// 							"visible": false
-				// 						}
-				// 					},
-				// 					"valueAxis": {
-				// 						"title": {
-				// 							"visible": false
-				// 						}
-				// 					}
-				// 				},
-				// 				"data": {
-				// 					"json": {
-				// 						"dimensions": {
-				// 							"weekLabel": "Weeks"
-				// 						},
-				// 						"measures": {
-				// 							"revenueLabel": "Revenue",
-				// 								"costLabel": "Costs"
-				// 						},
-				// 						"legend": {
-				// 							"visible": true,
-				// 								"position": "bottom",
-				// 									"alignment": "topLeft"
-				// 						},
-				// 						"list": weatherData.hourly
-				// 					},
-				// 					"path": "/list"
-				// 				},
-				// 				"dimensions": [
-				// 					{
-				// 						"name": "Date",
-				// 						"value": "{dt}"
-				// 					}
-				// 				],
-				// 					"measures": [
-				// 						{
-				// 							"name": "Temperature",
-				// 							"value": "{temp}"
-				// 						},
-				// 						{
-				// 							"name": "Humidity",
-				// 							"value": "{humidity}"
-				// 						}
-				// 					],
-				// 						"feeds": [
-				// 							{
-				// 								"uid": "valueAxis",
-				// 								"type": "Measure",
-				// 								"values": [
-				// 									"{measures/revenueLabel}",
-				// 									"{measures/costLabel}"
-				// 								]
-				// 							},
-				// 							{
-				// 								"uid": "categoryAxis",
-				// 								"type": "Dimension",
-				// 								"values": [
-				// 									"{dimensions/weekLabel}"
-				// 								]
-				// 							}
-				// 						]
-				// 			}
-							
-				// 		}
-				// 			var currentCard = new Card();
-				// 	currentCard.setManifest(configuration);
-				// 	currentCard.setModel(this.getView().getModel("currentWeather"), "currentWeather");
 
-				// 	if (cardContainer && cardContainer.addItem) {
-				// 		cardContainer.addItem(currentCard);
-				// 	} else if (cardContainer && cardContainer.addContent) {
-				// 		cardContainer.addContent(currentCard);
-				// 	}
-				// 	break;
 
 
 
 				case "Hourly Analytical card":
 					var forecastData = this.getView().getModel("forecast").getData();
-					
+
 					// Check if data is loaded
 					if (!forecastData || !forecastData.list) {
 						sap.m.MessageToast.show("Weather data is still loading. Please try again.");
@@ -405,7 +239,7 @@ sap.ui.define([
 					}
 
 					// Prepare data for chart - take first 10 forecast entries
-					var chartData = forecastData.list.slice(0, 10).map(function(item) {
+					var chartData = forecastData.list.slice(0, 10).map(function (item) {
 						return {
 							time: item.dt_txt.substring(11, 16), // Extract time (HH:MM)
 							temperature: item.main.temp,
@@ -499,8 +333,8 @@ sap.ui.define([
 						cardContainer.addContent(analyticalCard);
 					}
 					break;
-					
-					
+
+
 			}
 		}
 	});
