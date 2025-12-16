@@ -1,237 +1,3 @@
-// sap.ui.define([
-// 	"sap/ui/core/mvc/Controller",
-// 	"sap/ui/model/json/JSONModel",
-// 	"sap/ui/integration/widgets/Card"
-// ], (Controller, JSONModel, Card) => {
-// 	"use strict";
-
-// 	return Controller.extend("com.po.integrationcards.controller.View1", {
-// 		// onInit: function () {
-
-// 		// 	var weatherData = new JSONModel(
-// 		// 		"https://api.openweathermap.org/data/2.5/weather?q=vellore&appid=2506f94a6caec2a7d019b07e245534f0");
-// 		// 	this.getView().setModel(weatherData);
-
-
-// 		// 	// var url = "/weather/data/2.5/onecall?lat=12.9165&lon=79.1325&exclude=minutely,daily,alerts&appid=YOUR_KEY";
-// 		// 	// var model = new JSONModel(url);
-
-
-
-// 		// 	model.loadData(url);          // load JSON from URL
-
-// 		// 	this.getView().setModel(model);
-
-
-
-// 		// },
-// 		onInit: function () {
-// 			var weatherData = new JSONModel(
-// 				"https://api.openweathermap.org/data/2.5/weather?q=vellore&appid=2506f94a6caec2a7d019b07e245534f0"
-// 			);
-// 			this.getView().setModel(weatherData);
-
-// 		},
-
-
-
-// 		onSelectingWeatherOption: function (oEvent) {
-// 			var configuration;
-// 			var container = this.byId("idAppControl");
-// 			var weatherData = JSON.parse(this.getView().getModel().getJSON());
-// 			switch (oEvent.getSource().getSelectedButton().getText()) {
-// 				case "Current Object card":
-// 					break;
-
-// 				case "Hourly List Card":
-
-// 					configuration = {
-// 						"_version": "1.14.0",
-// 						"sap.app": {
-// 							"id": "card.explorer.highlight.list.card",
-// 							"type": "card"
-// 						},
-// 						"sap.card": {
-// 							"type": "List",
-// 							"header": {
-// 								"title": "Weather Data in list"
-// 							},
-// 							"content": {
-// 								"data": {
-// 									"json": weatherData.hourly
-// 								},
-// 								"item": {
-// 									"title": "Date is {dt}",
-// 									"description": "Temperature is {temp}",
-// 									"highlight": "Warning"
-// 								}
-// 							}
-// 						}
-// 					}
-
-
-// 					break;
-// 				case "Hourly Table Card":
-// 					configuration = {
-// 						"_version": "1.15.0",
-// 						"sap.app": {
-// 							"id": "card.explorer.table.card",
-// 							"type": "card",
-// 							"title": "Sample of a Table Card",
-// 							"subTitle": "Sample of a Table Card",
-// 							"applicationVersion": {
-// 								"version": "1.0.0"
-// 							},
-// 							"shortTitle": "A short title for this Card",
-// 							"info": "Additional information about this Card",
-// 							"description": "A long description for this Card",
-// 							"tags": {
-// 								"keywords": [
-// 									"Table",
-// 									"Card",
-// 									"Sample"
-// 								]
-// 							}
-// 						},
-// 						"sap.ui": {
-// 							"technology": "UI5",
-// 							"icons": {
-// 								"icon": "sap-icon://table-view"
-// 							}
-// 						},
-// 						"sap.card": {
-// 							"type": "Table",
-// 							"data": {
-// 								"json": [{
-// 									"product": "DVD player",
-// 									"salesOrder": "5000010050",
-// 									"netAmount": "2K USD",
-// 									"status": "Delivered",
-// 									"statusState": "Success",
-// 									"deliveryProgress": 100
-// 								},
-// 								{
-// 									"product": "Astro Laptop 1516",
-// 									"salesOrder": "5000010051",
-// 									"netAmount": "127k USD",
-// 									"status": "Canceled",
-// 									"statusState": "Error",
-// 									"deliveryProgress": 0
-// 								},
-// 								{
-// 									"product": "Astro Phone 6",
-// 									"salesOrder": "5000010052",
-// 									"netAmount": "8K USD",
-// 									"status": "In Progress",
-// 									"statusState": "Warning",
-// 									"deliveryProgress": 33
-// 								},
-// 								{
-// 									"product": "Beam Breaker B-1",
-// 									"salesOrder": "5000010053",
-// 									"netAmount": "25K USD",
-// 									"status": "Delivered",
-// 									"statusState": "Success",
-// 									"deliveryProgress": 100
-// 								},
-// 								{
-// 									"product": "Beam Breaker B-2",
-// 									"salesOrder": "5000010054",
-// 									"netAmount": "7K USD",
-// 									"status": "Delivered",
-// 									"statusState": "Success",
-// 									"deliveryProgress": 100
-// 								},
-// 								{
-// 									"product": "Beam Breaker B-3",
-// 									"salesOrder": "5000010050",
-// 									"netAmount": "2K USD",
-// 									"status": "Delivered",
-// 									"statusState": "Success",
-// 									"deliveryProgress": 100
-// 								},
-// 								{
-// 									"product": "Benda Laptop 1408",
-// 									"salesOrder": "5000010051",
-// 									"netAmount": "127k USD",
-// 									"status": "Canceled",
-// 									"statusState": "Error",
-// 									"deliveryProgress": 0
-// 								},
-// 								{
-// 									"product": "Bending Screen 21HD",
-// 									"salesOrder": "5000010052",
-// 									"netAmount": "8K USD",
-// 									"status": "In Progress",
-// 									"statusState": "Warning",
-// 									"deliveryProgress": 27
-// 								},
-// 								{
-// 									"product": "Blaster Extreme",
-// 									"salesOrder": "5000010052",
-// 									"netAmount": "8K USD",
-// 									"status": "In Progress",
-// 									"statusState": "Warning",
-// 									"deliveryProgress": 51
-// 								}
-// 								]
-// 							},
-// 							"header": {
-// 								"title": "Sales Orders for Key Accounts",
-// 								"subtitle": "Today"
-// 							},
-// 							"content": {
-// 								"maxItems": 9,
-// 								"row": {
-// 									"columns": [{
-// 										"title": "Product",
-// 										"value": "{product}",
-// 										"additionalText": "{salesOrder}",
-// 										"identifier": true
-// 									},
-// 									{
-// 										"title": "Net Amount",
-// 										"value": "{netAmount}",
-// 										"hAlign": "End"
-// 									},
-// 									{
-// 										"title": "Status",
-// 										"value": "{status}",
-// 										"state": "{statusState}"
-// 									},
-// 									{
-// 										"title": "Delivery Progress",
-// 										"progressIndicator": {
-// 											"percent": "{deliveryProgress}",
-// 											"text": "{= format.percent(${deliveryProgress} / 100)}",
-// 											"state": "{statusState}"
-// 										}
-// 									}
-// 									]
-// 								}
-// 							}
-// 						}
-// 					}
-// 					var myCard = new Card();
-// 					myCard.setManifest(configuration)
-// 					// container.getPages()[0].getContent()[0].addAggregation("items", myCard)
-// 					container.getPages()[0].getContent()[0].addItem(myCard);
-
-
-// 					break;
-// 				case "Hourly Analytical card":
-// 					break;
-
-
-
-
-// 			}
-
-
-// 		}
-// 	});
-// });
-
 
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
@@ -270,7 +36,7 @@ sap.ui.define([
 
 			// Get the dedicated card container
 			var cardContainer = this.byId("cardContainer");
-			
+
 			// Clear existing cards
 			if (cardContainer) {
 				cardContainer.removeAllItems();
@@ -358,7 +124,7 @@ sap.ui.define([
 					var currentCard = new Card();
 					currentCard.setManifest(configuration);
 					currentCard.setModel(this.getView().getModel("currentWeather"), "currentWeather");
-					
+
 					if (cardContainer && cardContainer.addItem) {
 						cardContainer.addItem(currentCard);
 					} else if (cardContainer && cardContainer.addContent) {
@@ -399,7 +165,7 @@ sap.ui.define([
 					var listCard = new Card();
 					listCard.setManifest(configuration);
 					listCard.setModel(this.getView().getModel("forecast"), "forecast");
-					
+
 					if (cardContainer && cardContainer.addItem) {
 						cardContainer.addItem(listCard);
 					} else if (cardContainer && cardContainer.addContent) {
@@ -409,7 +175,7 @@ sap.ui.define([
 
 				case "Hourly Table Card":
 					var forecastData = this.getView().getModel("forecast").getData();
-					
+
 					// Check if data is loaded
 					if (!forecastData || !forecastData.list) {
 						sap.m.MessageToast.show("Weather data is still loading. Please try again.");
@@ -466,7 +232,7 @@ sap.ui.define([
 
 					var tableCard = new Card();
 					tableCard.setManifest(configuration);
-					
+
 					if (cardContainer && cardContainer.addItem) {
 						cardContainer.addItem(tableCard);
 					} else if (cardContainer && cardContainer.addContent) {
@@ -474,9 +240,267 @@ sap.ui.define([
 					}
 					break;
 
+				// case "Hourly Analytical card":
+				// 	// Analytical card implementation can be added here
+				// 	configuration ={
+				// 		"_version": "1.14.0",
+				// 			"sap.app": {
+				// 			"id": "card.explorer.line.card",
+				// 				"type": "card",
+				// 					"title": "Sample of a Line Chart",
+				// 						"subTitle": "Sample of a Line Chart",
+				// 							"applicationVersion": {
+				// 				"version": "1.0.0"
+				// 			},
+				// 			"shortTitle": "A short title for this Card",
+				// 				"info": "Additional information about this Card",
+				// 					"description": "A long description for this Card",
+				// 						"tags": {
+				// 				"keywords": [
+				// 					"Analytical",
+				// 					"Card",
+				// 					"Line",
+				// 					"Sample"
+				// 				]
+				// 			}
+				// 		},
+				// 		"sap.ui": {
+				// 			"technology": "UI5",
+				// 				"icons": {
+				// 				"icon": "sap-icon://line-chart"
+				// 			}
+				// 		},
+				// 		"sap.card": {
+				// 			"type": "Analytical",
+				// 				"header": {
+				// 				"type": "Numeric",
+				// 					"data": {
+				// 					"json": {
+				// 						"number": "65.34",
+				// 							"unit": "K",
+				// 								"trend": "Down",
+				// 									"state": "Error",
+				// 										"target": {
+				// 							"number": 100,
+				// 								"unit": "K"
+				// 						},
+				// 						"deviation": {
+				// 							"number": 34.7,
+				// 								"state": "Critical"
+				// 						},
+				// 						"details": "Q1, 2018"
+				// 					}
+				// 				},
+				// 				"title": "Weather data analytical",
+				// 				},
+									
+				// 			},
+				// 			"content": {
+				// 				"chartType": "Line",
+				// 					"chartProperties": {
+				// 					"title": {
+				// 						"text": "Line chart",
+				// 							"visible": true,
+				// 								"alignment": "left"
+				// 					},
+				// 					"legend": {
+				// 						"visible": "{legend/visible}"
+				// 					},
+				// 					"legendGroup": {
+				// 						"layout": {
+				// 							"position": "{legend/position}",
+				// 								"alignment": "{legend/alignment}"
+				// 						}
+				// 					},
+				// 					"plotArea": {
+				// 						"dataLabel": {
+				// 							"visible": true
+				// 						}
+				// 					},
+				// 					"categoryAxis": {
+				// 						"title": {
+				// 							"visible": false
+				// 						}
+				// 					},
+				// 					"valueAxis": {
+				// 						"title": {
+				// 							"visible": false
+				// 						}
+				// 					}
+				// 				},
+				// 				"data": {
+				// 					"json": {
+				// 						"dimensions": {
+				// 							"weekLabel": "Weeks"
+				// 						},
+				// 						"measures": {
+				// 							"revenueLabel": "Revenue",
+				// 								"costLabel": "Costs"
+				// 						},
+				// 						"legend": {
+				// 							"visible": true,
+				// 								"position": "bottom",
+				// 									"alignment": "topLeft"
+				// 						},
+				// 						"list": weatherData.hourly
+				// 					},
+				// 					"path": "/list"
+				// 				},
+				// 				"dimensions": [
+				// 					{
+				// 						"name": "Date",
+				// 						"value": "{dt}"
+				// 					}
+				// 				],
+				// 					"measures": [
+				// 						{
+				// 							"name": "Temperature",
+				// 							"value": "{temp}"
+				// 						},
+				// 						{
+				// 							"name": "Humidity",
+				// 							"value": "{humidity}"
+				// 						}
+				// 					],
+				// 						"feeds": [
+				// 							{
+				// 								"uid": "valueAxis",
+				// 								"type": "Measure",
+				// 								"values": [
+				// 									"{measures/revenueLabel}",
+				// 									"{measures/costLabel}"
+				// 								]
+				// 							},
+				// 							{
+				// 								"uid": "categoryAxis",
+				// 								"type": "Dimension",
+				// 								"values": [
+				// 									"{dimensions/weekLabel}"
+				// 								]
+				// 							}
+				// 						]
+				// 			}
+							
+				// 		}
+				// 			var currentCard = new Card();
+				// 	currentCard.setManifest(configuration);
+				// 	currentCard.setModel(this.getView().getModel("currentWeather"), "currentWeather");
+
+				// 	if (cardContainer && cardContainer.addItem) {
+				// 		cardContainer.addItem(currentCard);
+				// 	} else if (cardContainer && cardContainer.addContent) {
+				// 		cardContainer.addContent(currentCard);
+				// 	}
+				// 	break;
+
+
+
 				case "Hourly Analytical card":
-					// Analytical card implementation can be added here
+					var forecastData = this.getView().getModel("forecast").getData();
+					
+					// Check if data is loaded
+					if (!forecastData || !forecastData.list) {
+						sap.m.MessageToast.show("Weather data is still loading. Please try again.");
+						break;
+					}
+
+					// Prepare data for chart - take first 10 forecast entries
+					var chartData = forecastData.list.slice(0, 10).map(function(item) {
+						return {
+							time: item.dt_txt.substring(11, 16), // Extract time (HH:MM)
+							temperature: item.main.temp,
+							humidity: item.main.humidity
+						};
+					});
+
+					configuration = {
+						"_version": "1.14.0",
+						"sap.app": {
+							"id": "card.explorer.analytical.weather.card",
+							"type": "card"
+						},
+						"sap.card": {
+							"type": "Analytical",
+							"header": {
+								"type": "Numeric",
+								"data": {
+									"json": {
+										"number": forecastData.list[0].main.temp.toFixed(1),
+										"unit": "°C",
+										"trend": forecastData.list[0].main.temp > forecastData.list[1].main.temp ? "Down" : "Up",
+										"state": forecastData.list[0].main.temp > 30 ? "Error" : "Success",
+										"details": "Current Temperature"
+									}
+								},
+								"title": "Weather Analytics - Vellore",
+								"subTitle": "Temperature & Humidity Forecast"
+							},
+							"content": {
+								"chartType": "Line",
+								"legend": {
+									"visible": true,
+									"position": "Bottom",
+									"alignment": "Left"
+								},
+								"plotArea": {
+									"dataLabel": {
+										"visible": true,
+										"showTotal": false
+									}
+								},
+								"title": {
+									"text": "Weather Forecast",
+									"visible": true,
+									"alignment": "Left"
+								},
+								"measureAxis": "valueAxis",
+								"dimensionAxis": "categoryAxis",
+								"data": {
+									"json": chartData
+								},
+								"dimensions": [
+									{
+										"label": "Time",
+										"value": "{time}"
+									}
+								],
+								"measures": [
+									{
+										"label": "Temperature (°C)",
+										"value": "{temperature}"
+									},
+									{
+										"label": "Humidity (%)",
+										"value": "{humidity}"
+									}
+								],
+								"feeds": [
+									{
+										"uid": "valueAxis",
+										"type": "Measure",
+										"values": ["Temperature (°C)", "Humidity (%)"]
+									},
+									{
+										"uid": "categoryAxis",
+										"type": "Dimension",
+										"values": ["Time"]
+									}
+								]
+							}
+						}
+					};
+
+					var analyticalCard = new Card();
+					analyticalCard.setManifest(configuration);
+
+					if (cardContainer && cardContainer.addItem) {
+						cardContainer.addItem(analyticalCard);
+					} else if (cardContainer && cardContainer.addContent) {
+						cardContainer.addContent(analyticalCard);
+					}
 					break;
+					
+					
 			}
 		}
 	});
