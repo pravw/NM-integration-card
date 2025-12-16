@@ -1,0 +1,60 @@
+<!-- 
+
+
+
+<mvc:View
+    controllerName="com.po.integrationcards.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout">
+    <App id="idAppControl">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <VBox id="vbox" class="sapUiSmallMargin">
+                <l:HorizontalLayout class="sapUiContentPadding">
+                    <RadioButtonGroup id="rbg" columns="5" select="onSelectingWeatherOption">
+                        <buttons>
+                            <RadioButton id="Current" text="Current Object card" />
+                            <RadioButton id="Minute" text="Hourly List Card" />
+                            <RadioButton id="Hourly" text="Hourly Table Card" />
+                            <RadioButton id="Daily" text="Hourly Analytical card" />
+                        </buttons>
+                    </RadioButtonGroup>
+                </l:HorizontalLayout>
+            </VBox>
+        </content>
+    </Page>
+    </App>
+
+</mvc:View> -->
+
+
+<mvc:View
+    controllerName="com.po.integrationcards.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout">
+    <App id="idAppControl">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <VBox id="vbox" class="sapUiSmallMargin">
+                <l:HorizontalLayout class="sapUiContentPadding">
+                    <RadioButtonGroup id="rbg" columns="5" select="onSelectingWeatherOption">
+                        <buttons>
+                            <RadioButton id="Current" text="Current Object card" />
+                            <RadioButton id="Minute" text="Hourly List Card" />
+                            <RadioButton id="Hourly" text="Hourly Table Card" />
+                            <RadioButton id="Daily" text="Hourly Analytical card" />
+                        </buttons>
+                    </RadioButtonGroup>
+                </l:HorizontalLayout>
+                
+                <!-- IMPORTANT: Add this VBox for cards -->
+                <VBox id="cardContainer" width="100%" class="sapUiSmallMargin">
+                </VBox>
+            </VBox>
+        </content>
+    </Page>
+    </App>
+</mvc:View>
+
